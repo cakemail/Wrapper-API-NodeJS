@@ -1,0 +1,23 @@
+{
+  "author": "Christian Joudrey <cmallette@gmail.com> (http://cjoudrey.com/)",
+  "name": "CakeMail-API-Wrapper",
+  "description": "A NodeJS consumer of CakeMail's API",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cakemail/Wrapper-API-NodeJS",
+  "repository": {
+    "url": "git://github.com/cakemail/Wrapper-API-NodeJS.git"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --reporter list"
+  },
+  "dependencies": {
+    "request": "~2.9.202"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
