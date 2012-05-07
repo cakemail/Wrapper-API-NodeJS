@@ -2,6 +2,7 @@ var Client = require("../lib/client");
 var assert = require("assert");
 var server = require("./helpers/server");
 var url = require("url");
+var qs = require("querystring");
 
 describe("Client", function() {
   describe("#constructor", function() {
@@ -44,7 +45,7 @@ describe("Client", function() {
   describe("#execute", function() {
     it("should accept a API class, API method, params, and a callback and execute the request", function(done) {
       var mockServer = server.request(function(req, res) {
-        var data = JSON.parse(req.data);
+        var data = qs.parse(req.data);
         res.end(JSON.stringify({
           status: "success",
           data: data

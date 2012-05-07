@@ -3,6 +3,7 @@ var post = require("request").post;
 var assert = require("assert");
 var server = require("./helpers/server");
 var url = require("url");
+var qs = require("querystring");
 
 describe("Request", function() {
 
@@ -60,7 +61,7 @@ describe("Request", function() {
       var mockServer = server.request(function(req, res) {
         assert.equal(req.headers.apikey, apiKey, "API key should be passed in request headers.");
 
-        var data = JSON.parse(req.data);
+        var data = qs.parse(req.data);
         res.end(JSON.stringify({
           status: "success",
           data: data
