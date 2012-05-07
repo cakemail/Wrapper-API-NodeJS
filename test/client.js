@@ -24,4 +24,18 @@ describe("Client", function() {
       assert.ok(instance.baseUrl);
     });
   });
+
+  describe("#buildUrl", function() {
+    it("should return an end-point url when passed an API class and API method", function() {
+      var instance = new Client();
+      assert.equal(instance.buildUrl("Client", "GetList"), "https://api.wbsrvc.com/Client/GetList");
+    });
+
+    it("should use the baseUrl when one is passed", function() {
+      var instance = new Client({
+        baseUrl: "http://127.0.0.1"
+      });
+      assert.equal(instance.buildUrl("Client", "GetList"), "http://127.0.0.1/Client/GetList");
+    });
+  });
 });
