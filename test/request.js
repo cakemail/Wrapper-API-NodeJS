@@ -51,12 +51,15 @@ describe("Request", function() {
 
   describe("#execute", function() {
     it("should perform an http request with the provided arguments and trigger the callback", function(done) {
+      var apiKey = "1234";
       var params = {
-        user_key: "1234",
-        client_id: "1234"
+        userKey: "1234",
+        clientId: "4567"
       };
 
       var mockServer = server.request(function(req, res) {
+        assert.equal(req.headers.apikey, apiKey, "API key should be passed in request headers.");
+
         var data = JSON.parse(req.data);
         res.end(JSON.stringify({
           status: "success",
@@ -65,7 +68,7 @@ describe("Request", function() {
       });
 
       var instance = new Request({
-        apiKey: "1234",
+        apiKey: apiKey,
         url: url.format({
           protocol: "http",
           hostname: mockServer.hostname,
@@ -75,8 +78,8 @@ describe("Request", function() {
       });
 
       instance.execute(params, function(err, response) {
-        assert.equal(response.user_key, "1234");
-        assert.equal(response.client_id, "1234");
+        assert.equal(response.userKey, "1234");
+        assert.equal(response.clientId, "4567");
         done();
       });
     });
