@@ -2,6 +2,8 @@
 
 You can find the CakeMail API documentation on the [Dev Portal](http://dev.cakemail.com).
 
+## Build status [![Build Status](https://secure.travis-ci.org/cakemail/Wrapper-API-NodeJS.png?branch=master)](http://travis-ci.org/cakemail/Wrapper-API-NodeJS)
+
 ## Usage
 
 Example call to [List.GetList](http://dev.cakemail.com/api/List/GetList):
