@@ -1,8 +1,8 @@
 {
   "author": "Christian Joudrey <cmallette@gmail.com> (http://cjoudrey.com/)",
-  "name": "CakeMail-API-Wrapper",
+  "name": "cakemail-api-wrapper",
   "description": "A NodeJS consumer of CakeMail's API",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/cakemail/Wrapper-API-NodeJS",
   "repository": {
     "url": "git://github.com/cakemail/Wrapper-API-NodeJS.git"
