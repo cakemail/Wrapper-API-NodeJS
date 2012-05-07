@@ -1,5 +1,7 @@
 var Client = require("../lib/client");
 var assert = require("assert");
+var server = require("./helpers/server");
+var url = require("url");
 
 describe("Client", function() {
   describe("#constructor", function() {
@@ -36,6 +38,36 @@ describe("Client", function() {
         baseUrl: "http://127.0.0.1"
       });
       assert.equal(instance.buildUrl("Client", "GetList"), "http://127.0.0.1/Client/GetList");
+    });
+  });
+
+  describe("#execute", function() {
+    it("should accept a API class, API method, params, and a callback and execute the request", function(done) {
+      var mockServer = server.request(function(req, res) {
+        var data = JSON.parse(req.data);
+        res.end(JSON.stringify({
+          status: "success",
+          data: data
+        }));
+      });
+
+      var instance = new Client({
+        baseUrl: url.format({
+          protocol: "http",
+          hostname: mockServer.hostname,
+          port: mockServer.port
+        })
+      });
+
+      var params = {
+        clientId: "1234"
+      };
+
+      instance.execute("Client", "GetList", params, function(err, data) {
+        assert.equal(err, null);
+        assert.equal(data.clientId, "1234");
+        done();
+      });
     });
   });
 });
